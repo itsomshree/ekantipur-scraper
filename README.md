@@ -36,7 +36,7 @@ source $HOME/.local/bin/env
 **2. Clone the repo**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ekantipur-scraper.git
+git clone https://github.com/itsomshree/ekantipur-scraper.git
 cd ekantipur-scraper
 ```
 
