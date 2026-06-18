@@ -1,9 +1,12 @@
 [project]
 name = "ekantipur-scraper"
 version = "0.1.0"
-description = "Playwright-based scraper for ekantipur.com — extracts entertainment news and cartoon of the day"
+description = "Playwright-based scraper for ekantipur.com that extracts entertainment news and cartoon of the day"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "playwright>=1.59.0",
+    "pydantic>=2.13.4",
+    "pytest>=9.0.3",
+    "pytest-playwright>=0.8.0",
 ]
