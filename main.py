@@ -1,6 +1,4 @@
-def main():
-    print("Hello from ekantipur-scraper!")
-
+from src.ekantipur_scraper.scraper import scrape
 
 if __name__ == "__main__":
-    main()
+    scrape()
