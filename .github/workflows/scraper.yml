@@ -2,7 +2,7 @@ name: Run Scraper Daily
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # runs every day at 6AM UTC
+    - cron: '15 0 * * *'  # 12:15 AM UTC = 6:00 AM Nepal Time
   workflow_dispatch:      # allows manual trigger from GitHub UI
 
 jobs:
