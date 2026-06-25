@@ -1,0 +1,35 @@
+name: Run Scraper Daily
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # runs every day at 6AM UTC
+  workflow_dispatch:      # allows manual trigger from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Add uv to PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Install Playwright browsers
+        run: uv run playwright install chromium --with-deps
+
+      - name: Run scraper
+        run: uv run python main.py
+
+      - name: Upload output.json
+        uses: actions/upload-artifact@v3
+        with:
+          name: scraper-output
+          path: output/output.json
