@@ -1,9 +1,0 @@
-1. Help me write a Playwright scraper in Python to extract the top 5 entertainment news articles from https://ekantipur.com/entertainment. Each article should have: title, image_url, category, author. The article container is div.category-inner-wrapper, title is in h2 a, image is in div.category-image img, author is in div.author-name p a.
-
-2. The scraper runs without errors but produces no output and doesn't create output.json. Add debug print statements to find where it's stopping.
-
-3. The cartoon section div.cartoon-wrapper is not found on the entertainment page. Fix the scraper to navigate to https://ekantipur.com/cartoon instead to find the cartoon.
-
-4. Some image_urls are null because of lazy loading. Add a scroll and wait before scraping images to fix this.
-
-5. The category field is showing "2026" (from the URL). Fix it to hardcode "मनोरञ्जन" since we are scraping the entertainment page.
