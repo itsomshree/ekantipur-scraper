@@ -6,6 +6,7 @@ from playwright.sync_api import sync_playwright
 from .config import (
     CARTOON_URL,
     ENTERTAINMENT_URL,
+    HEADLESS,
     MAX_ARTICLES,
     NAVIGATION_TIMEOUT_MS,
     OUTPUT_PATH,
@@ -90,7 +91,7 @@ def scrape_cartoon(page) -> CartoonOfTheDay:
 
 def scrape():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=HEADLESS)
         page = browser.new_page()
 
         try:
