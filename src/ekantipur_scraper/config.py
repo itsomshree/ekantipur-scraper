@@ -1,3 +1,8 @@
+import os
+
+# Use headless mode in CI env to prevent crash
+HEADLESS = os.getenv("CI", "false").lower() == "true"
+
 BASE_URL = "https://ekantipur.com"
 ENTERTAINMENT_URL = f"{BASE_URL}/entertainment"
 CARTOON_URL = f"{BASE_URL}/cartoon"
