@@ -27,6 +27,7 @@ jobs:
 
       - name: Run scraper
         run: uv run python main.py
+        continue-onerror: true  # Cloudeflare blocking CI runner issue
 
       - name: Upload output.json
         if: always()
