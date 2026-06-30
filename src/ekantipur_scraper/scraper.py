@@ -24,10 +24,6 @@ logger = logging.getLogger(__name__)
 def scrape_entertainment_news(page) -> list[Article]:
     logger.info("Navigating to entertainment news page...")
     page.goto(ENTERTAINMENT_URL)
-    
-    
-    page.screenshot(path="output/debug_screenshot.png")
-    logger.info("Saved debug screenshot")
 
     # Wait for the articles to load
     page.wait_for_selector("div.category-inner-wrapper", timeout=SELECTOR_TIMEOUT_MS)
