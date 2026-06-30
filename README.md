@@ -193,10 +193,26 @@ The generated `output.json` is uploaded as a workflow artifact and can be downlo
 
 ## Notes
 
-- Scraper uses `headless=False` by default for visibility - set to `True` for production/server use
+- Headless mode is automatically enabled in CI environments (`CI=true`) and disabled locally for easier debugging
 - Nepali Devanagari text is preserved using `ensure_ascii=False` in JSON output
 - Author field is `null` for articles and cartoons where author information is unavailable
 - Page is scrolled before scraping to ensure lazy-loaded images are fully rendered
+
+---
+
+## Known Limitation: Cloudflare Bot Protection in CI
+
+When running via GitHub Actions, ekantipur.com's **Cloudflare bot protection** blocks the scraper with a "Performing security verification" challenge page. This happens because GitHub-hosted runners use shared, well-known cloud/datacenter IP ranges, which Cloudflare flags as likely bot traffic - unlike a residential IP (e.g., running locally), which passes through without a challenge.
+
+**The scraper works correctly when run locally** since local connections come from a residential IP.
+
+In a production environment, this is typically addressed with one or more of the following:
+- **Residential or rotating proxies** to avoid datacenter IP flags
+- **Self-hosted runners** (running the workflow from a non-cloud IP)
+- **Headless-detection evasion** techniques (stealth plugins, fingerprint spoofing)
+- **Official APIs** if the target site provides one, avoiding scraping entirely
+
+This is a deliberate architectural trade-off for this project - solving full Cloudflare evasion is out of scope for this assessment, so the limitation is documented here rather than worked around with fragile hacks.
 
 ---
 
